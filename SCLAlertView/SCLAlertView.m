@@ -183,7 +183,11 @@ SCLTimerDisplay *buttonTimer;
     
     // Init
     _labelTitle = [[UILabel alloc] init];
-    _viewText = [UITextView textViewUsingTextLayoutManager:FALSE];
+    if (@available(iOS 16.0, *)) {
+        _viewText = [UITextView textViewUsingTextLayoutManager:FALSE];
+    } else {
+        _viewText = [[UITextView alloc] init];
+    }
     _viewText.accessibilityTraits = UIAccessibilityTraitStaticText;
     _contentView = [[UIView alloc] init];
     _circleView = [[UIView alloc] init];
